@@ -1,0 +1,6 @@
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocketChat\bin\Debug\SocketChat.dll
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocketChat\bin\Debug\SocketChat.pdb
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocketChat\obj\Debug\SocketChat.dll
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocketChat\obj\Debug\SocketChat.pdb
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\SocketChat.dll
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\SocketChat.pdb

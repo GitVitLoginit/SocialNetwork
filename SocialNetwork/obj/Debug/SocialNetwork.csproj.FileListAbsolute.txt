@@ -1,0 +1,10 @@
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\SocialNetwork.exe.config
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\SocialNetwork.exe
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\SocialNetwork.pdb
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.Form1.resources
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.Properties.Resources.resources
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.csproj.GenerateResource.Cache
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.exe
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.pdb
+\\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\SocketChat.pdb
