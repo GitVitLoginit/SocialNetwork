@@ -4,3 +4,4 @@
 \\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocketChat\obj\Debug\SocketChat.pdb
 \\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\SocketChat.dll
 \\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\SocketChat.pdb
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SocialNetwork\SocketChat\obj\Debug\VoiceChat.csprojResolveAssemblyReference.cache

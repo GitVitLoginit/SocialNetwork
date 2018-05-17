@@ -40,20 +40,28 @@ namespace SocketChat
             mciSendString("open new Type waveaudio alias recsound", null, 0, IntPtr.Zero);
             mciSendString("record recsound", null, 0, IntPtr.Zero);
         }
-        public void stopRecording()
+        public string stopRecording()
         {
-            string command = "save recsound " + getFileName();
+            string fileName = getFileName();
+            string command = "save recsound " + fileName;
             mciSendString(command, null, 0, IntPtr.Zero);
             mciSendString("close recsound", null, 0, IntPtr.Zero);
+            return (fileName.Remove(0,10));
         }
 
-        public void listenRecording()
+        public bool listenRecording(string record)
         {
-            bool fileExists;
-            SoundPlayer waveFile = new SoundPlayer(@"C:\sounds\sound4.wav");
-            fileExists = File.Exists(@"C:\sounds\sound4.wav");
-            if (fileExists)
-                waveFile.PlaySync(); // PlaySync means that once sound start then no other activity if form will occur untill sound goes to finish
+              bool fileExists;
+              SoundPlayer waveFile = new SoundPlayer(@"C:\sounds\"+record);
+              fileExists = File.Exists(@"C:\sounds\"+ record);
+              if (fileExists)
+              {
+                  waveFile.PlaySync(); // PlaySync means that once sound start then no other activity if form will occur untill sound goes to finish
+
+              }
+
+            return fileExists;
+
         }
     }
 }

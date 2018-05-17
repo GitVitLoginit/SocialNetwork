@@ -13,6 +13,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using SocketChat;
+using System.Drawing.Imaging;
 
 
 
@@ -22,17 +23,51 @@ namespace SocialNetwork
     public partial class Form1 : Form
     {
         VoiceControl VC = new VoiceControl();
+   
+    /*    private void im()
+        {
+            System.Drawing.Image tempImage = MyProject.Properties.Resources.myImage;
+            Clipboard.SetDataObject(tempImage);
+            DataFormats.Format image = DataFormats.GetFormat(DataFormats.Bitmap);
+            richTextBox1.Paste(image);
+        }*/
 
-
-        /* private string knowFileName()
-         {
-
-         }*/
 
         public Form1()
         {
             InitializeComponent();
        
+        }
+        private void sendMessage(bool voiceRecord, string recordName="")
+        {
+            
+            //convert  string message to byte array
+            ASCIIEncoding aEncoding = new ASCIIEncoding();
+            byte[] sendingMessage = new byte[1500];
+            listMessage.Items.Add(DateTime.Now.ToLongTimeString()+":");
+            if (!voiceRecord)
+            {
+             
+                sendingMessage = aEncoding.GetBytes(textMessage.Text);
+          
+                //sending the Encoding message
+                sck.Send(sendingMessage);
+                //addding to the listBox
+                listMessage.Items.Add("Me: " + textMessage.Text);
+
+                textMessage.Text = null;
+            }
+            else
+            {
+                sendingMessage = aEncoding.GetBytes(recordName);
+                //sending the Encoding message
+                sck.Send(sendingMessage);
+                //addding to the listBox
+                listMessage.Items.Add("Me: " + recordName );
+                textMessage.Text = null;
+            }
+          
+
         }
         private string GetLocalIP()
         {
@@ -52,39 +87,42 @@ namespace SocialNetwork
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+
             sck = new Socket(AddressFamily.InterNetwork,SocketType.Dgram,ProtocolType.Udp);
             sck.SetSocketOption(SocketOptionLevel.Socket,SocketOptionName.ReuseAddress,true);
             //get user ip
             textLocalIp.Text = GetLocalIP();
             textRemoteIp.Text = GetLocalIP();
+            textRemotePort.Text = 80.ToString();
+            textLocalPort.Text = 81.ToString();
+            //  richMessage.LoadFile(@"C:\sounds\sound4.wav");
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            button2.Enabled = true;
+            button1.Enabled = false;
             VC.startRecording();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            VC.stopRecording();
+            string recordName;
+            button1.Enabled = true;
+            button2.Enabled = false;
+
+            recordName= VC.stopRecording();
+            sendMessage(true, recordName);
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            VC.listenRecording();
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
+   
 
 
 
         Socket sck;
         EndPoint epLocal, epRemote;
+        byte[] buffer;
 
         private void MessageCallBack(IAsyncResult aResult)
         {
@@ -94,9 +132,16 @@ namespace SocialNetwork
                 receivedData = (byte[])aResult.AsyncState;
                 //converting byte array to string
                 ASCIIEncoding aEncoding = new ASCIIEncoding();
-                string receivedMessage = aEncoding.GetString(receivedData);
+                string receivedMessage = aEncoding.GetString(receivedData).Trim();
                 //Adding this meassage into listbox
-                listMessage.Items.Add("Friend: " + receivedMessage);
+
+        
+                listMessage.Items.Add(DateTime.Now.ToLongTimeString() + ":");
+      
+                listMessage.Items.Add("Friend: " +  receivedMessage);
+               
+
+
 
                 buffer = new byte[1500];
                 sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
@@ -123,18 +168,41 @@ namespace SocialNetwork
 
         private void buttonSend_Click(object sender, EventArgs e)
         {
-            //convert  string message to byte array
-            ASCIIEncoding aEncoding = new ASCIIEncoding();
-            byte[] sendingMessage = new byte[1500];
-            sendingMessage = aEncoding.GetBytes(textMessage.Text);
-            //sending the Encoding message
-            sck.Send(sendingMessage);
-            //addding to the listBox
-            listMessage.Items.Add("Me: "+ textMessage.Text);
-            textMessage.Text = null;
+            if (textMessage.Text.IndexOf(".wav") == -1)
+                sendMessage(false);
+            else
+                MessageBox.Show("Don't use .wav extension in ypur messages!");
         }
 
-        byte[] buffer;
+        private void Form1_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listMessage_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+ 
+        }
+
+        private void listMessage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listMessage.SelectedIndex != -1)
+            {
+                string choosedElem;
+                choosedElem = listMessage.SelectedItem.ToString();
+               
+                if (choosedElem.IndexOf(".wav") != -1)//record
+                {
+                    choosedElem = choosedElem.Substring(choosedElem.IndexOf("sound"), choosedElem.IndexOf(".wav")- choosedElem.IndexOf("sound")+4);
+                    // MessageBox.Show(choosedElem.Length.ToString());
+                    //    VoiceControl VC1 = new VoiceControl();
+                    VC.listenRecording(choosedElem);
+                       
+                }
+            }
+        }
+
+      
 
     }
 }
