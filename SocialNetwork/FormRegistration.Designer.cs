@@ -41,6 +41,9 @@
             this.textPassword = new System.Windows.Forms.TextBox();
             this.dateTimeBirth = new System.Windows.Forms.DateTimePicker();
             this.buttonRegister = new System.Windows.Forms.Button();
+            this.textConfirmMail = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.buttonSignUp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textName
@@ -49,6 +52,7 @@
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(158, 20);
             this.textName.TabIndex = 0;
+            this.textName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textName_KeyPress);
             // 
             // textSurname
             // 
@@ -56,6 +60,7 @@
             this.textSurname.Name = "textSurname";
             this.textSurname.Size = new System.Drawing.Size(158, 20);
             this.textSurname.TabIndex = 1;
+            this.textSurname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textSurname_KeyPress);
             // 
             // label1
             // 
@@ -148,18 +153,54 @@
             // buttonRegister
             // 
             this.buttonRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonRegister.Location = new System.Drawing.Point(94, 361);
+            this.buttonRegister.Location = new System.Drawing.Point(94, 347);
             this.buttonRegister.Name = "buttonRegister";
-            this.buttonRegister.Size = new System.Drawing.Size(158, 35);
+            this.buttonRegister.Size = new System.Drawing.Size(158, 29);
             this.buttonRegister.TabIndex = 22;
-            this.buttonRegister.Text = "Login up";
+            this.buttonRegister.Text = "Confirm e-mail";
             this.buttonRegister.UseVisualStyleBackColor = true;
+            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
+            // 
+            // textConfirmMail
+            // 
+            this.textConfirmMail.Location = new System.Drawing.Point(94, 401);
+            this.textConfirmMail.MaxLength = 10;
+            this.textConfirmMail.Name = "textConfirmMail";
+            this.textConfirmMail.Size = new System.Drawing.Size(158, 20);
+            this.textConfirmMail.TabIndex = 23;
+            this.textConfirmMail.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(91, 381);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(117, 17);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Verification code:";
+            // 
+            // buttonSignUp
+            // 
+            this.buttonSignUp.Enabled = false;
+            this.buttonSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSignUp.Location = new System.Drawing.Point(94, 427);
+            this.buttonSignUp.Name = "buttonSignUp";
+            this.buttonSignUp.Size = new System.Drawing.Size(158, 29);
+            this.buttonSignUp.TabIndex = 25;
+            this.buttonSignUp.Text = "Sign up";
+            this.buttonSignUp.UseVisualStyleBackColor = true;
+            this.buttonSignUp.Visible = false;
+            this.buttonSignUp.Click += new System.EventHandler(this.buttonSignUp_Click);
             // 
             // FormRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 408);
+            this.ClientSize = new System.Drawing.Size(353, 454);
+            this.Controls.Add(this.buttonSignUp);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textConfirmMail);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.dateTimeBirth);
             this.Controls.Add(this.label5);
@@ -175,6 +216,7 @@
             this.Controls.Add(this.textName);
             this.Name = "FormRegistration";
             this.Text = "FormRegistration";
+            this.Load += new System.EventHandler(this.FormRegistration_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,5 +237,8 @@
         private System.Windows.Forms.TextBox textPassword;
         private System.Windows.Forms.DateTimePicker dateTimeBirth;
         private System.Windows.Forms.Button buttonRegister;
+        private System.Windows.Forms.TextBox textConfirmMail;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button buttonSignUp;
     }
 }

@@ -9,3 +9,6 @@
 \\mac\home\documents\visual studio 2015\Projects\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.csprojResolveAssemblyReference.cache
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.FormRegister.resources
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.FormRegistration.resources
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\SocketChat.pdb
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\UsersInfo.mdf
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\UsersInfo_log.ldf
