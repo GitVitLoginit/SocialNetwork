@@ -44,6 +44,7 @@
             this.textConfirmMail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.buttonSignUp = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textName
@@ -133,6 +134,7 @@
             // 
             this.textPassword2.Location = new System.Drawing.Point(94, 321);
             this.textPassword2.Name = "textPassword2";
+            this.textPassword2.PasswordChar = '*';
             this.textPassword2.Size = new System.Drawing.Size(158, 20);
             this.textPassword2.TabIndex = 18;
             // 
@@ -140,6 +142,7 @@
             // 
             this.textPassword.Location = new System.Drawing.Point(94, 272);
             this.textPassword.Name = "textPassword";
+            this.textPassword.PasswordChar = '*';
             this.textPassword.Size = new System.Drawing.Size(158, 20);
             this.textPassword.TabIndex = 17;
             // 
@@ -193,11 +196,22 @@
             this.buttonSignUp.Visible = false;
             this.buttonSignUp.Click += new System.EventHandler(this.buttonSignUp_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(-6, 436);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(70, 20);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "<-Back";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(353, 454);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonSignUp);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textConfirmMail);
@@ -240,5 +254,6 @@
         private System.Windows.Forms.TextBox textConfirmMail;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonSignUp;
+        private System.Windows.Forms.Button button1;
     }
 }

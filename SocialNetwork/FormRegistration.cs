@@ -16,8 +16,9 @@ namespace SocialNetwork
     public partial class FormRegistration : Form
     {
         private string confirmString;
-        string connectionString;
-        SqlConnection connection;
+        SqlConnection cn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = \\Mac\Home\Documents\Visual Studio 2015\Projects\SocialNetwork\SocialNetwork\UsersInfo.mdf; Integrated Security = True");
+        SqlCommand cmd = new SqlCommand();
+        SqlDataReader dr;
 
 
 
@@ -159,13 +160,31 @@ namespace SocialNetwork
             string password = textPassword.Text;
             DateTime dateBirth = dateTimeBirth.Value.Date;
             string sqlFormattedDate = dateBirth.ToString("yyyy-MM-dd");
+            string aboutMe = "";
             //string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            cn.Open();
+            cmd.CommandText = "select * from RegistrationTable where Mail='"+mail+"'";
+            dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                MessageBox.Show("This e-mail is already used");
+                cn.Close();
+            }
+            else
+            {
+                cn.Close();
+                cn.Open();
+                cmd.CommandText = "insert into RegistrationTable (Mail,Password) values ('"+mail+"','"+password+"')";
+                cmd.ExecuteNonQuery();
+                cmd.Clone();
 
-            connection = new SqlConnection(connectionString);
-            connection.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter();
+                cmd.CommandText = "insert into InfoTable (Name,Surname,Date,Photo,AboutMe) values ('" + name + "','" + surname + "','" + sqlFormattedDate + "','" + aboutMe + "','" + aboutMe+ "')";
+                cmd.ExecuteNonQuery();
+                cmd.Clone();
+                MessageBox.Show("Registration complete");
+                cn.Close();
 
-            connection.Close();
+            }
 
         }
 
@@ -173,9 +192,8 @@ namespace SocialNetwork
         {
             if (confirmString==textConfirmMail.Text)
             {
-                MessageBox.Show("Registration completed succesfully! Thank you");
+                databaseRegister();
 
-              
             }
             else
             {
@@ -187,8 +205,14 @@ namespace SocialNetwork
 
         private void FormRegistration_Load(object sender, EventArgs e)
         {
-            connectionString = ConfigurationManager.ConnectionStrings["SocialNetwork.Properties.Settings.UsersInfoConnectionString"].ConnectionString;
-            
+            cmd.Connection = cn;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormRegister formReg = new FormRegister();
+            this.Hide();
+            formReg.Show();
         }
     }
 }

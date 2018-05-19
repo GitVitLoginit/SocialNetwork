@@ -49,6 +49,7 @@
             this.textPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textPassword.Location = new System.Drawing.Point(56, 119);
             this.textPassword.Name = "textPassword";
+            this.textPassword.PasswordChar = '*';
             this.textPassword.Size = new System.Drawing.Size(179, 26);
             this.textPassword.TabIndex = 1;
             // 
@@ -81,6 +82,7 @@
             this.buttonSignIn.TabIndex = 4;
             this.buttonSignIn.Text = "Sign in";
             this.buttonSignIn.UseVisualStyleBackColor = true;
+            this.buttonSignIn.Click += new System.EventHandler(this.buttonSignIn_Click);
             // 
             // buttonSignUp
             // 
@@ -106,6 +108,7 @@
             this.Controls.Add(this.textLogin);
             this.Name = "FormRegister";
             this.Text = "FormRegister";
+            this.Load += new System.EventHandler(this.FormRegister_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
