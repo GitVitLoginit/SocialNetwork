@@ -228,6 +228,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textSurname);
             this.Controls.Add(this.textName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormRegistration";
             this.Text = "FormRegistration";
             this.Load += new System.EventHandler(this.FormRegistration_Load);

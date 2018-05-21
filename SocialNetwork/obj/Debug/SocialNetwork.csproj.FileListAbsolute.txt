@@ -12,3 +12,4 @@
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\SocketChat.pdb
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\UsersInfo.mdf
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SocialNetwork\SocialNetwork\bin\Debug\UsersInfo_log.ldf
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.Profile.resources

@@ -42,8 +42,16 @@ namespace SocialNetwork
                 dr = cmd.ExecuteReader();
                 if (dr.HasRows)
                 {
-                    MessageBox.Show("Login is succesfully completed!");
-                    cn.Close();
+                    if (dr.Read())
+                    {
+                        MessageBox.Show("Login is succesfully completed!");
+                        cn.Close();
+                        Profile formReg = new Profile(mail,0);
+
+                        this.Hide();
+                        formReg.Show();
+                    }
+
                 }
                 else
                 {

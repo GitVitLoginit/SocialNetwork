@@ -183,7 +183,9 @@ namespace SocialNetwork
                 cmd.Clone();
                 MessageBox.Show("Registration complete");
                 cn.Close();
-
+                Profile formReg = new Profile(mail,0);
+                this.Hide();
+                formReg.Show();
             }
 
         }
@@ -193,6 +195,7 @@ namespace SocialNetwork
             if (confirmString==textConfirmMail.Text)
             {
                 databaseRegister();
+            
 
             }
             else
